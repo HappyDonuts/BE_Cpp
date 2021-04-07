@@ -11,14 +11,16 @@
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
+  pinMode(12, INPUT);               // D6 Button pin
+  pinMode(14, INPUT);              // D5 Buzzer pin
+  
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(LED_BUILTIN, LOW);   // Turn the LED on (Note that LOW is the voltage level
-  // but actually the LED is on; this is because
-  // it is active low on the ESP-01)
-  delay(1022);                      // Wait for a second
-  digitalWrite(LED_BUILTIN, HIGH);  // Turn the LED off by making the voltage HIGH
-  delay(2000);                      // Wait for two seconds (to demonstrate the active low LED)
+  int switchStatus = digitalRead(12); 
+  //digitalWrite(LED_BUILTIN, !switchStatus); 
+  //digitalWrite(14, switchStatus); 
+  Serial.print(switchStatus);
+  delay(200);
 }
