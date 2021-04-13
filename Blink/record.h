@@ -1,6 +1,6 @@
 #include "melody.h"
 
-//class "périodique"
+//class "periodique"
 class Play {
 private:
 	int Te;

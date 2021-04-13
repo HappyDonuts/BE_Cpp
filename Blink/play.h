@@ -1,6 +1,6 @@
 #include "melody.h"
 
-//class "périodique"
+//class "periodique"
 class Play {
 private:
 	int Te;
@@ -10,5 +10,3 @@ public:
 	void set_sound(melody);
 	void set_metronome();
 };
-
-

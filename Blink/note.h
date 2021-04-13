@@ -2,9 +2,11 @@
 
 class Note {
 public:
-	Note(int start, int stop, int note);
+	Note(int start_p, int stop_p, int freq_p);
+  int get_freq(void);
+  void play_buzzer(
 private:
 	int start;
 	int stop;
-	int note;
+	int freq;
 };
