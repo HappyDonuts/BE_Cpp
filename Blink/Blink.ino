@@ -1,3 +1,4 @@
+#include "Application.h"
 /*
   ESP8266 Blink by Simon Peter
   Blink the blue LED on the ESP-01 module
