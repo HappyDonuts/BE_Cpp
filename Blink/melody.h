@@ -1,3 +1,6 @@
+#ifndef MELODY_H
+#define MELODY_H
+
 #include "note.h"
 #include <list>
 using namespace std;
@@ -10,3 +13,5 @@ class Melody {
   private:
   	list<Note> l_notes;
 };
+
+#endif
