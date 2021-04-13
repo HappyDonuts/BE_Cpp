@@ -8,4 +8,7 @@ private:
 	bool state;
 public:
 	void set_sound(melody);
+	void set_metronome();
 };
+
+
