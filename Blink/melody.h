@@ -1,16 +1,17 @@
 #ifndef MELODY_H
 #define MELODY_H
 
-#include "note.h"
-#include <list>
-using namespace std;
+#include "Note_frequency.h"
+
+#define LENGTH 1000
 
 class Melody {
   public:
   	Melody();
     int* get_array_notes();
-  	//void add_note(Note n);
-    //list<Note> get_list(void);
+    void play_melody();
+    void record_melody();
+    void create_metronome();
     
   private:
   	int* array_notes; //metronome

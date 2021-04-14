@@ -5,11 +5,8 @@
 Application oneManBand;
 
 void setup() {
-  Serial.begin(9600);
-  Serial.print("Hello World");
   oneManBand.setup_app();
-  //tone(14, NOTE_C4, 500);
-
+  
   /*
   //pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
   //pinMode(12, INPUT);               // D6 Button pin
