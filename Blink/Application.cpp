@@ -1,21 +1,28 @@
+#include <Arduino.h>
 #include "Application.h"
 #include "Melody.h"
 
+
 void Application::setup_app(void){
   Melody metronome;
-  for (int i=0;i<10;i++){
-    const int timestamp = i*1000;
-    Note note_t(timestamp, timestamp+50, NOTE_C4); 
-    metronome.add_note(note_t);
-  }
-
-  list<Note>::iterator it;
-  for (it=metronome.get_list().begin(); it!=metronome.get_list().end(); it++){
-    //Serial.print(*it.get_freq());
-  }
   
-
+  for (int i=0;i<10;i++){
+    for (int j=0;j<10;j++){ 
+      metronome.get_array_notes()[100*i+j] = NOTE_C4;
+    }
+  }
+//metronome.get_array_notes()
+  for (int i=0;i<1000;i++){
+    
+    if (metronome.get_array_notes()[i] != 0){
+      tone(14, NOTE_C4, 10);
+    }
+    delay(10);
+  }
+   
 }
+
+
 
 void Application::run_app(void){
   

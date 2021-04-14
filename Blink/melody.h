@@ -8,10 +8,12 @@ using namespace std;
 class Melody {
   public:
   	Melody();
-  	void add_note(Note n);
-    list<Note> get_list(void);
+    int* get_array_notes();
+  	//void add_note(Note n);
+    //list<Note> get_list(void);
+    
   private:
-  	list<Note> l_notes;
+  	int* array_notes; //metronome
 };
 
 #endif
