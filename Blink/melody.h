@@ -1,6 +1,7 @@
 #ifndef MELODY_H
 #define MELODY_H
 
+#include "Pin_gpio.h"
 #include "Note_frequency.h"
 
 #define LENGTH 1000

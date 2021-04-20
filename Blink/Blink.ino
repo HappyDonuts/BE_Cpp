@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Note_frequency.h"
 
+
 // Instance application
 Application oneManBand;
 
