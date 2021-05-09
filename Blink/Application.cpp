@@ -9,9 +9,14 @@ void Application::setup_app(void){
 //  metronome.play_melody();
 
   Melody melody1;
-  melody1.record_melody();
+  Melody melody2;
+
+  melody1.setup_melody();
+  melody1.record_melody(melody2);
   delay(2000);
-  melody1.play_melody();
+  melody2.record_melody(melody1);
+  delay(2000);
+  melody1.play_both_melodies(melody2);
 }
 
 

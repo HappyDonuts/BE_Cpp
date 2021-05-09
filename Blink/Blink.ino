@@ -8,6 +8,8 @@ Application oneManBand;
 void setup() {
   oneManBand.setup_app();
   
+  
+  
   /*
   //pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
   //pinMode(12, INPUT);               // D6 Button pin

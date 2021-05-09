@@ -10,12 +10,13 @@ class Melody {
   public:
   	Melody();
     int* get_array_notes();
-    void play_melody();
-    void record_melody();
-    void create_metronome();
+    void setup_melody();
+    void play_both_melodies(Melody mel_2);
+    void record_melody(Melody mel_2);
+    void create_metronome(); 
     
   private:
-  	int* array_notes; //metronome
+  	int* array_notes;
 };
 
 #endif

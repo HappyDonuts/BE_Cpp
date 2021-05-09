@@ -16,97 +16,81 @@ void Melody::create_metronome(){
   }
 }
 
-void Melody::play_melody(){
+void Melody::setup_melody(){
+  // Bouger dans Devicee::setup_device !!
+  pinMode(PIN_BUTTON_1, INPUT_PULLUP);   //  Initialize buttons
+  pinMode(PIN_BUTTON_2, INPUT_PULLUP);  
+  pinMode(PIN_BUTTON_3, INPUT_PULLUP);  
+  pinMode(PIN_BUTTON_4, INPUT_PULLUP);    
+  pinMode(PIN_BUTTON_5, INPUT_PULLUP);  
+  pinMode(PIN_BUTTON_6, INPUT_PULLUP);  
+  pinMode(PIN_BUTTON_7, INPUT_PULLUP);  
+    
+  pinMode(PIN_BUZZER_1, OUTPUT);
+  pinMode(PIN_BUZZER_2, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
+  delay(500);
+  
+}
+
+void Melody::play_both_melodies(Melody mel_2){
+  // Changer vers class Song
   for (int i=0;i<LENGTH;i++){
     if (this->array_notes[i] != 0){
-      tone(15, this->array_notes[i], 10);
+      tone(PIN_BUZZER_1, this->array_notes[i], 10);
+      tone(PIN_BUZZER_2, mel_2.array_notes[i], 10);
     }
     delay(10);
   }
 }
 
-void Melody::record_melody(){
-  int PIN_BUZZER = PIN_TX;
-  //LED vert pour start
-  pinMode(PIN_D0, INPUT_PULLUP);   //  Initialize buttons
-  pinMode(PIN_D1, INPUT_PULLUP);  
-  pinMode(PIN_D2, INPUT_PULLUP);  
- // pinMode(PIN_D3, INPUT_PULLUP);  
-//  pinMode(PIN_D4, INPUT_PULLUP);   //D4 NOT IN USE
-  pinMode(PIN_D5, INPUT_PULLUP);    
-  pinMode(PIN_D6, INPUT_PULLUP);  
-  pinMode(PIN_D7, INPUT_PULLUP);  
-  pinMode(PIN_D8, INPUT_PULLUP);  
-  pinMode(PIN_RX, INPUT_PULLUP); 
-    
-  pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
-  
-  delay(1000);
+void Melody::record_melody(Melody mel_2){ 
+  // Changer vers song
   digitalWrite(LED_BUILTIN,0);
-  
   for (int i=0;i<LENGTH;i++){   
-    const int button_state_D0=digitalRead(PIN_D0);
-    const int button_state_D1=digitalRead(PIN_D1);
-    const int button_state_D2=digitalRead(PIN_D2);
-//    const int button_state_D3=digitalRead(PIN_D3);
-  //  const int button_state_D4=digitalRead(PIN_D4); //CANNOT USE
-    const int button_state_D5=digitalRead(PIN_D5);
-    const int button_state_D6=digitalRead(PIN_D6);
-    const int button_state_D7=digitalRead(PIN_D7);
-    const int button_state_D8=digitalRead(PIN_D8);
-    const int button_state_RX=digitalRead(PIN_RX);
+    const int button_state_1 = digitalRead(PIN_BUTTON_1); 
+    const int button_state_2 = digitalRead(PIN_BUTTON_2);
+    const int button_state_3 = digitalRead(PIN_BUTTON_3);
+    const int button_state_4 = digitalRead(PIN_BUTTON_4);
+    const int button_state_5 = digitalRead(PIN_BUTTON_5);
+    const int button_state_6 = digitalRead(PIN_BUTTON_6);
+    const int button_state_7 = digitalRead(PIN_BUTTON_7);
 
-    if (button_state_D0 == 0){
+    tone(PIN_BUZZER_2, mel_2.array_notes[i], 10);
+    
+    if (button_state_1 == 0){
       this->array_notes[i] = NOTE_C4; 
-      tone(PIN_BUZZER, this->array_notes[i], 10);
+      tone(PIN_BUZZER_1, this->array_notes[i], 10);
     }   
-    if (button_state_D1 == 0){
+    if (button_state_2 == 0){
       this->array_notes[i] = NOTE_D4; 
-      tone(PIN_BUZZER, this->array_notes[i], 10);
+      tone(PIN_BUZZER_1, this->array_notes[i], 10);
     }   
-    if (button_state_D2 == 0){
+    if (button_state_3 == 0){
       this->array_notes[i] = NOTE_E4; 
-      tone(PIN_BUZZER, this->array_notes[i], 10);
+      tone(PIN_BUZZER_1, this->array_notes[i], 10);
     }   
-//    if (button_state_D3 == 0){
-//      this->array_notes[i] = NOTE_F4; 
-//      tone(PIN_BUZZER, this->array_notes[i], 10);
-//    }
-
-    if (button_state_D5 == 0){
-      this->array_notes[i] = NOTE_G4; 
-      tone(PIN_BUZZER, this->array_notes[i], 10);
-    }
-    if (button_state_D6 == 0){
-      this->array_notes[i] = NOTE_A4; 
-      tone(PIN_BUZZER, this->array_notes[i], 10);
-    }
-
-    if (button_state_D7 == 0){
-        this->array_notes[i] = NOTE_AS4; 
-        tone(PIN_BUZZER, this->array_notes[i], 10);
-    }
-    if (button_state_D8 == 0){
-        this->array_notes[i] = NOTE_C5; 
-        tone(PIN_BUZZER, this->array_notes[i], 10);
+    if (button_state_4 == 0){
+      this->array_notes[i] = NOTE_F4; 
+      tone(PIN_BUZZER_1, this->array_notes[i], 10);
     }
     
+    if (button_state_5 == 0){
+      this->array_notes[i] = NOTE_G4; 
+      tone(PIN_BUZZER_1, this->array_notes[i], 10);
+    }
+
+    if (button_state_6 == 0){
+        this->array_notes[i] = NOTE_A4; 
+        tone(PIN_BUZZER_1, this->array_notes[i], 10);
+    }
+    if (button_state_7 == 0){
+        this->array_notes[i] = NOTE_B4; 
+        tone(PIN_BUZZER_1, this->array_notes[i], 10);
+    }    
     delay(10);
     
   }
   digitalWrite(LED_BUILTIN,1);
   
 }
-
-
-//void Melody::add_note(Note n) {
-//	l_notes.push_back(n);
-//}
-//
-//list<Note> Melody::get_list(void){
-//  return this->l_notes;
-//}
-
-int* Melody::get_array_notes(){
-  return this->array_notes;
-  }
