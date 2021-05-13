@@ -16,4 +16,7 @@
 #define PIN_BUTTON_7 3
 #define PIN_BUZZER_2 1
 
+#define PIN_LED_1 9
+#define PIN_LED_2 10
+
 #endif
