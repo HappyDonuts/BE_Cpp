@@ -4,7 +4,6 @@
 
 class Led : public Device{
   public:
-    //constructeur vide ? 
     Led(int pin, int pin_mode);
     void setup_device();
     void set_led(int state);

@@ -2,6 +2,7 @@
 #define BUZZER_H
 #include"device.h"
 
+// Buzzer class inherits from Device class
 class Buzzer: public Device{
   public:
     Buzzer();

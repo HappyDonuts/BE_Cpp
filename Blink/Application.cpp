@@ -38,19 +38,30 @@ void Application::setup_app(void){
   tab_buzzers[1]=buzzer_2;
 }
 
+// Creates, records and plays the melodies
 void Application::run_app(void){
   Melody melody1;
   Melody melody2;
 
+//  Metronome function test. It creates a metronome melody
 //  Melody metronome;
 //  metronome.create_metronome();  
-//  metronome.play_melody();
 
-  melody1.setup_melody();
-  
+  // Built in led indicates when the user can record
+  pinMode(LED_BUILTIN, OUTPUT); 
+ 
+  // Record first melody
+  digitalWrite(LED_BUILTIN,0);
   melody1.record_melody(melody2, tab_buttons, tab_buzzers); //led_countdown, led_melody);
+  digitalWrite(LED_BUILTIN,1);
   delay(2000);
+  
+  // Record second melody
+  digitalWrite(LED_BUILTIN,0);
   melody2.record_melody(melody1, tab_buttons, tab_buzzers);//, led_countdown, led_melody);
+  digitalWrite(LED_BUILTIN,1);
   delay(2000);
+  
+  // Play all melodies. Class function
   Melody::play_all_melodies(melody1, melody2, tab_buzzers);//, led_melody);
 }

@@ -2,6 +2,7 @@
 #include "melody.h"
 #include "button.h"
 
+// Constructor, initilizes the array with zeros
 Melody::Melody(){
   array_notes = new int[MELODY_LENGTH];
   for (int i=0;i<MELODY_LENGTH;i++){
@@ -9,10 +10,12 @@ Melody::Melody(){
     }
 }
 
+// Index operator overcharge
 int& Melody::operator[] (const int i){  
   return(this->array_notes[i]); 
 }
 
+// Creates metronome melody
 void Melody::create_metronome(){
   for (int i=0;i<MELODY_LENGTH/100;i++){
     for (int j=0;j<MELODY_LENGTH/100;j++){ 
@@ -21,13 +24,9 @@ void Melody::create_metronome(){
   }
 }
 
-void Melody::setup_melody(){
-  pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
-  delay(500);
-}
-
+// Plays all recorded melodies
 void Melody::play_all_melodies(Melody mel_1, Melody mel_2, Buzzer* tab_buzzers){//Led led_melody){
-  // Changer vers class Song
+  // Both melodies are played at the same time on different buzzers
   for (int i=0;i<MELODY_LENGTH;i++){
     if (mel_1.array_notes[i] != 0){
       tab_buzzers[0].play_tone(mel_1.array_notes[i], NOTE_LENGTH);
@@ -43,10 +42,9 @@ void Melody::play_all_melodies(Melody mel_1, Melody mel_2, Buzzer* tab_buzzers){
   
 }
 
+// Records a new melody while playing the previous one
 void Melody::record_melody(Melody mel_2, Button* tab_buttons, Buzzer* tab_buzzers){//, Led led_countdown, Led led_melody){ 
-  // Changer vers song  
-  
-  digitalWrite(LED_BUILTIN,0);
+  // All buttons are read
   for (int i=0;i<MELODY_LENGTH;i++){
   //  try {   
       const int button_state_1 = tab_buttons[0].get_button_state(); 
@@ -61,7 +59,8 @@ void Melody::record_melody(Melody mel_2, Button* tab_buttons, Buzzer* tab_buzzer
   //      cout << "Les boutons ne sont pas en pull up mode" << endl;
   //    }
   //  }
-    
+
+    // Notes are added to the melody sequency depending on which button has been pressed
     if (button_state_1 == 0){
       this->array_notes[i] = NOTE_C4; 
         }   
@@ -83,24 +82,20 @@ void Melody::record_melody(Melody mel_2, Button* tab_buttons, Buzzer* tab_buzzer
     if (button_state_7 == 0){
         this->array_notes[i] = NOTE_B4; 
     }
+
+    // When a button is pressed, the note is also played
     if (this->array_notes[i] != 0){
         tab_buzzers[1].play_tone(this->array_notes[i], NOTE_LENGTH);
     }
-
-    
+    // Previously recorded melody is also played
     if (mel_2.array_notes[i] != 0){
-      tab_buzzers[0].play_tone(mel_2.array_notes[i], NOTE_LENGTH);
-      
-    }
-    if (this->array_notes[i] != 0){
-        tab_buzzers[1].play_tone(this->array_notes[i], NOTE_LENGTH);
-        //led_melody.set_led(0);
+      tab_buzzers[0].play_tone(mel_2.array_notes[i], NOTE_LENGTH);    
     }
 
+    // The loop is iterarted every 10 ms
     delay(10);
     //led_melody.set_led(1);
   }
-  digitalWrite(LED_BUILTIN,1);
   //led_countdown.set_led(1);
 
 }

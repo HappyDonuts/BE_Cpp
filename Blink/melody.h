@@ -13,7 +13,6 @@ class Melody {
   public:
   	Melody();
     int* get_array_notes();
-    void setup_melody();
     static void play_all_melodies(Melody mel_1, Melody mel_2, Buzzer* tab_buzzers);
     void record_melody(Melody mel_2, Button* tab_buttons, Buzzer* tab_buzzers);
     void create_metronome(); 
