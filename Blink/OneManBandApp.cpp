@@ -1,4 +1,4 @@
-#include "Application.h"
+#include "OneManBandApp.h"
 
 // Devices declaration (Buttons and Buzzers)
 Button tab_buttons[7];
@@ -15,7 +15,7 @@ Buzzer buzzer_1(PIN_BUZZER_1, OUTPUT);
 Buzzer buzzer_2(PIN_BUZZER_2, OUTPUT);
 
 // Devices initialisation
-void Application::setup_app(void){
+void OneManBandApp::setup_app(void){
   button_1.setup_device();
   button_2.setup_device();
   button_3.setup_device();
@@ -39,7 +39,7 @@ void Application::setup_app(void){
 }
 
 // Creates, records and plays the melodies
-void Application::run_app(void){
+void OneManBandApp::run_app(void){
   Melody melody1;
   Melody melody2;
 

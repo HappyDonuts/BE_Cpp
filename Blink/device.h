@@ -6,7 +6,7 @@
 // Parent class of hardware devices
 class Device {
   public:
-  	void setup_device();
+  	virtual void setup_device() = 0;
   protected:
     // Indicates if the device is initialized
     bool initialized;
