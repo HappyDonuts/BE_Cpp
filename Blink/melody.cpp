@@ -9,6 +9,10 @@ Melody::Melody(){
     }
 }
 
+int& Melody::operator[] (const int i){  
+  return(this->array_notes[i]); 
+}
+
 void Melody::create_metronome(){
   for (int i=0;i<MELODY_LENGTH/100;i++){
     for (int j=0;j<MELODY_LENGTH/100;j++){ 
@@ -43,14 +47,20 @@ void Melody::record_melody(Melody mel_2, Button* tab_buttons, Buzzer* tab_buzzer
   // Changer vers song  
   
   digitalWrite(LED_BUILTIN,0);
-  for (int i=0;i<MELODY_LENGTH;i++){   
-    const int button_state_1 = tab_buttons[0].get_button_state(); 
-    const int button_state_2 = tab_buttons[1].get_button_state();
-    const int button_state_3 = tab_buttons[2].get_button_state();
-    const int button_state_4 = tab_buttons[3].get_button_state();
-    const int button_state_5 = tab_buttons[4].get_button_state();
-    const int button_state_6 = tab_buttons[5].get_button_state();
-    const int button_state_7 = tab_buttons[6].get_button_state();
+  for (int i=0;i<MELODY_LENGTH;i++){
+  //  try {   
+      const int button_state_1 = tab_buttons[0].get_button_state(); 
+      const int button_state_2 = tab_buttons[1].get_button_state();
+      const int button_state_3 = tab_buttons[2].get_button_state();
+      const int button_state_4 = tab_buttons[3].get_button_state();
+      const int button_state_5 = tab_buttons[4].get_button_state();
+      const int button_state_6 = tab_buttons[5].get_button_state();
+      const int button_state_7 = tab_buttons[6].get_button_state();
+  //  } catch (int e) {
+  //    if (e == ERREUR_PULLMODE) {
+  //      cout << "Les boutons ne sont pas en pull up mode" << endl;
+  //    }
+  //  }
     
     if (button_state_1 == 0){
       this->array_notes[i] = NOTE_C4; 

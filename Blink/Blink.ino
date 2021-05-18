@@ -7,6 +7,7 @@ Application oneManBand;
 
 void setup() {
   oneManBand.setup_app();
+  oneManBand.run_app();
   
 
   

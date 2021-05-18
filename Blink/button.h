@@ -2,6 +2,9 @@
 #define BUTTON_H
 #include "device.h"
 
+
+//#define ERREUR_PULLMODE 1
+
 class Button : public Device{
   public:
     Button();
