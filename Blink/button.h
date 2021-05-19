@@ -2,8 +2,8 @@
 #define BUTTON_H
 #include "device.h"
 
-
 #define ERREUR_PULLMODE 1
+
 // Button class inherits from Device class
 class Button : public Device{
   public:

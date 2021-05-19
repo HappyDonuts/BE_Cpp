@@ -6,8 +6,6 @@
 #include "Pin_gpio.h"
 #include "Note_frequency.h"
 
-
-
 #define MELODY_LENGTH 1000
 #define NOTE_LENGTH 10
 
