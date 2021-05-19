@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "melody.h"
 #include "button.h"
+#include <iostream>
+using namespace std;
 
 // Constructor, initilizes the array with zeros
 Melody::Melody(){
@@ -45,20 +47,29 @@ void Melody::play_all_melodies(Melody mel_1, Melody mel_2, Buzzer* tab_buzzers){
 // Records a new melody while playing the previous one
 void Melody::record_melody(Melody mel_2, Button* tab_buttons, Buzzer* tab_buzzers){//, Led led_countdown, Led led_melody){ 
   // All buttons are read
+
+     int button_state_1 ; 
+    int button_state_2;
+     int button_state_3 ;
+     int button_state_4 ;
+     int button_state_5;
+     int button_state_6 ;
+     int button_state_7 ;
+  
   for (int i=0;i<MELODY_LENGTH;i++){
-  //  try {   
-      const int button_state_1 = tab_buttons[0].get_button_state(); 
-      const int button_state_2 = tab_buttons[1].get_button_state();
-      const int button_state_3 = tab_buttons[2].get_button_state();
-      const int button_state_4 = tab_buttons[3].get_button_state();
-      const int button_state_5 = tab_buttons[4].get_button_state();
-      const int button_state_6 = tab_buttons[5].get_button_state();
-      const int button_state_7 = tab_buttons[6].get_button_state();
-  //  } catch (int e) {
-  //    if (e == ERREUR_PULLMODE) {
-  //      cout << "Les boutons ne sont pas en pull up mode" << endl;
-  //    }
-  //  }
+    try {   
+      button_state_1 = tab_buttons[0].get_button_state(); 
+      button_state_2 = tab_buttons[1].get_button_state();
+      button_state_3 = tab_buttons[2].get_button_state();
+      button_state_4 = tab_buttons[3].get_button_state();
+      button_state_5 = tab_buttons[4].get_button_state();
+      button_state_6 = tab_buttons[5].get_button_state();
+      button_state_7 = tab_buttons[6].get_button_state();
+    } catch (int e) {
+      if (e == ERREUR_PULLMODE) {
+       Serial.print("Les boutons ne sont pas en pull up mode");
+      }
+    }
 
     // Notes are added to the melody sequency depending on which button has been pressed
     if (button_state_1 == 0){

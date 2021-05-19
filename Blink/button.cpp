@@ -18,9 +18,9 @@ void Button::setup_device(){
 
 // Gets the button state to see if it has been pressed
 int Button::get_button_state(){
-//  if (pull_mode != INPUT_PULLUP){
-//    throw ERREUR_PULLMODE;
-//  } else {
+  if (pull_mode != INPUT_PULLUP){
+    throw ERREUR_PULLMODE;
+  } else {
     return digitalRead(pin);
-//  }
+  }
 }

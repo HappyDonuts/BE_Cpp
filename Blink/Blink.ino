@@ -6,6 +6,7 @@
 OneManBandApp oneManBand;
 
 void setup() {
+  Serial.begin(9600);
   oneManBand.setup_app();
   oneManBand.run_app();
   
